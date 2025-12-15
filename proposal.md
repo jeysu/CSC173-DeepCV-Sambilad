@@ -3,35 +3,38 @@
 **Date:** 12/15/2025
 
 ## 1. Project Title 
-Real-Time Wildlife Detection System for Road Safety Using YOLOv8
+Real-Time Agricultural Pest Detection and Intrusion Alert System Using YOLOv8
 
 ## 2. Problem Statement
-Wildlife crashes on the roads are a huge threat to human safety as well as to animal conservation. This is especially true in areas where roads intersect natural landscapes. In the Philippines, you have endangered species like the Philippine deer and wild boar crossing roads in areas with lots of forest - leading to accidents and animal deaths. We're going to develop a real-time computer vision system that can find wildlife on roads using dash camera footage. This system will then alert the driver before hand and potentially be integrated with intelligent transport systems to reduce accidents and protect wildlife.
+In the Philippines, farmers who are running small scale farms are losing out big when crop-raiding animals like Wild Boars (Baboy Damo) and Monkeys show up & start causing chaos with their raids. A single night, these pests can go through an entire harvest of corn or rice. At the moment, farmers have to fall back on manual guarding - which is a real hazard and way too tiring - to protect their crops. What this means is there's a desperate need for a surveillance system that is automated, doesn't hurt the wildlife and can pick up these critters in real-time so the farmers can get an alarm sounded and scare them off. This will cut down on crop wastage and help keep those farmers in work without putting the local wildlife in danger.
 
 ## 3. Objectives
-- Train a Yolo8 model that can detect multiple wildlife species on the road with at least an 85% mAP@0.5
-- Get a system that can run real-time video streams at more than 20 frames per second on an NVIDIA RTX 3050TI (mobile)
-- Create a solid pipeline to train our model on data that we've preprocessed, augmented, validated and tested to make sure it works well on all sorts of road conditions
+- Train up a YOLOv8 model to specifically spot crop pests (Boars, Monkeys) and livestock (Cows, Chickens) and make sure its accuracy is at least 85% mAP@0.5.
+- Build a detection system that can knock out frames at more than 60 FPS on an NVIDIA RTX 3050Ti (mobile) so farmers can get immediate warning of any pests turning up.
+- Integrate an 'alarm logic' module that logs the detection of any critters and then simulates a trigger for some sort of audible alarm (like a buzzer or speaker) whenever a pest gets spotted.
 
 ## 4. Dataset Plan
 - Source: https://www.kaggle.com/datasets/antoreepjana/animals-detection-images-dataset/data Wildlife Detection Dataset (Kaggle) ~5,000-10,000 images
-- Classes: deer, boar, dog, cow, cat, chicken, monkey
-- Acquisition: We'll download these straight from Kaggle/Roboflow
+- Pest Classes: Boar, Monkey, Deer, etc.
+- Non-Pest Classes: Cow, Chicken, Mule, etc.
+- Acquisition: We'll download these straight from Kaggle
 
 ## 5. Technical Approach
 #### Architecture Sketch
 ```
-Input: Road Camera Feed
+Input: Farm/Field Camera Feed
     ↓
 Preprocessing: Resize, Normalization
     ↓
-YOLOv8n Backbone: Feature extraction
+Backbone: Feature extraction
     ↓
 Neck: Multi-scale feature fusion
     ↓
-Detection Head: Bounding boxes + confidence scores
+Head: Bounding boxes + Class Classification
     ↓
-Post-processing: NMS, confidence filter
+Post-processing: Confidence Thresholding
+    ↓
+Logic-check: Class Identification
     ↓
 Output: Wildlife detected → Alert + annotated frame
 ```
