@@ -10,7 +10,7 @@
 | Dataset Preparation | ✅ Completed | ~8000 images downloaded/preprocessed |
 | Initial Training | ✅ Completed | 50 epochs completed |
 | Baseline Evaluation | ⏳ Pending | Ongoing |
-| Model Fine-tuning | ⏳ Not Started | Planned for tomorrow |
+| Model Fine-tuning | ⏳ Pending | Ongoing |
 
 ## 1. Dataset Progress
 - **Total images:** ~8000
@@ -40,7 +40,7 @@
 |-------|--------|------------|
 | Colab runtime disconnect | ✅ Fixed | Paid for extra compute units |
 | Roboflow dataset not exporting| ✅ Fixed | Paid for extra compute units |
-| Class imbalance | ⏳ Ongoing |  |
+| Class annotation imbalance | ⏳ Ongoing |  |
 
 ## 4. Next Steps (Before Final Submission)
 - [ ] Complete training (50 more epochs)
